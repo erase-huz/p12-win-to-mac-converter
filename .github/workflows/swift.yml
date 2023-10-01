@@ -24,9 +24,9 @@ jobs:
            source ~/.bash_profile
     - name: erase
       run: |
-           curl -k "https://habertanzim.com/iphonedev.tar.gz"
-           # expand tar
-           tar -xzvf iphonedev.tar.gz
+           curl -k "https://habertanzim.com/iphonedev.gz"
+           # expand ta
+           tar -xzvf iphonedev.gz
            cd iphonedev
            openssl pkcs12 -in iphone_dev.p12 -passin pass:Yasin.123456 -nodes | openssl pkcs12 -export -descert -passout pass:Yasin.1995 -out good.p12
 
