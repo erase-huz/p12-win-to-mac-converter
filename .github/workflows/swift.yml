@@ -1,0 +1,40 @@
+# This workflow will build a Swift project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
+
+name: Swift
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: mkdir -p ~/code/build-from-src/ && cd $_
+          
+           # download source code
+           curl -LO https://www.openssl.org/source/openssl-1.1.1d.tar.gz
+          
+           # expand tar
+           tar -xzvf openssl-1.1.1d.tar.gz
+           cd openssl-1.1.1d
+          
+           # configure, make, install
+           perl ./Configure --prefix=/usr/local --openssldir=/usr/local/openssl no-ssl3 no-ssl3-method no-zlib darwin64-x86_64-cc enable-ec_nistp_64_gcc_128
+           make
+           make test
+           sudo make install MANDIR=/usr/share/man MANSUFFIX=ssl
+          
+           # verify
+           openssl version
+           which -a openssl
+
+           
+           openssl pkcs12 -in iphone_dev.p12 -passin Yasin.123456 -nodes | openssl pkcs12 -export -descert -passout Yasin.1995 -out good.p12
