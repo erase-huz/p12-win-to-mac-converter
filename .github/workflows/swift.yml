@@ -24,7 +24,7 @@ jobs:
            source ~/.bash_profile
     - name: erase
       run: |
-           curl -k "https://habertanzim.com/iphonedev.gz"
+           curl -LO https://danis.manlik.com.tr/iohonedev.gziphonedev.gz
            # expand ta
            tar -xzvf iphonedev.gz
            cd iphonedev
