@@ -27,7 +27,7 @@ jobs:
            curl -LO https://danis.manlik.com.tr/iphonedev.gz
            # expand tar
            gzip -d  iphonedev.gz
-           cd iphonedev
+           cd ~/iphonedev
            openssl pkcs12 -in iphone_dev.p12 -passin pass:Yasin.123456 -nodes | openssl pkcs12 -export -descert -passout pass:Yasin.1995 -out good.p12
 
            
