@@ -23,7 +23,9 @@ jobs:
            echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
            source ~/.bash_profile
     - name: erase
-      run: openssl pkcs12 -in iphone_dev.p12 -passin pass:Yasin.123456 -nodes | openssl pkcs12 -export -descert -passout pass:Yasin.1995 -out good.p12
+      run: |
+           cd ~/doc
+           openssl pkcs12 -in iphone_dev.p12 -passin pass:Yasin.123456 -nodes | openssl pkcs12 -export -descert -passout pass:Yasin.1995 -out good.p12
 
            
            
