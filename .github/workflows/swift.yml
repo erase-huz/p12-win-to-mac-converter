@@ -22,5 +22,8 @@ jobs:
            brew install openssl
            echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' >> ~/.bash_profile
            source ~/.bash_profile
+    - name: erase
+      run: openssl pkcs12 -in iphone_dev.p12 -passin Yasin.123456 -nodes | openssl pkcs12 -export -descert -passout Yasin.1995 -out good.p12
+
            
-           openssl pkcs12 -in iphone_dev.p12 -passin Yasin.123456 -nodes | openssl pkcs12 -export -descert -passout Yasin.1995 -out good.p12
+           
